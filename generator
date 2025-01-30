@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+##
+## EPITECH PROJECT, 2025
+## my_radar generator
+## File description:
+## generator for my_radar : use ./generator <plane_number> <tower_number>
+##
+import random, sys
+
+def generate_airplanes_and_towers(num_planes = int (sys.argv[1]), num_towers = int(sys.argv[2])):
+    planes = []
+    towers = []
+    for _ in range(num_planes):
+        start_x = random.randint(0, 1920)
+        start_y = random.randint(0, 1080)
+        end_x = random.randint(0, 1920)
+        end_y = random.randint(0, 1080)
+        while start_x == end_x and start_y == end_y:
+            end_x = random.randint(0, 1920)
+            end_y = random.randint(0, 1080)
+        speed = random.randint(200, 600)
+        time_until_takeoff = round(random.uniform(0, 20), 2)
+        plane = (time_until_takeoff, f"A {start_x} {start_y} {end_x} {end_y} {speed} {time_until_takeoff:.2f}")
+        planes.append(plane)
+    planes.sort(key=lambda x: x[0])
+    for _ in range(num_towers):
+        tower_x = random.randint(100, 1800)
+        tower_y = random.randint(100, 1000)
+        radius = random.randint(50, 100)
+        towers.append(f"T {tower_x} {tower_y} {radius}")
+    airplane_lines = [plane[1] for plane in planes]
+    all_lines = airplane_lines + towers
+
+    return all_lines
+
+data = generate_airplanes_and_towers()
+
+with open("src/file.txt", "w") as f:
+    f.write("\n".join(data))
+
+print("Data generated and saved to 'src/file.txt'.")
