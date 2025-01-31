@@ -36,3 +36,6 @@ Here's a list of keys and their effect :
 use **`make`** to create the **`my_radar`** exectuable  
 Use **`./my_radar -h`** for further informations  
 Use **`./my_radar <link_to_your_file>`**
+
+## PREVIEW
+![image](https://github.com/user-attachments/assets/5b8f33ac-67ae-4928-a093-a12d60c24a88)
